@@ -1,0 +1,35 @@
+.row-header{
+  margin: 0px auto;
+  padding: 0px auto;
+}
+.row-content{
+  margin: 0px auto;
+  padding: 10px 0px 10px 10px ;
+  border-bottom: 1px ridge;
+  min-height:400px;}
+
+
+
+body{
+
+    z-index:0;
+}
+
+table {
+    border: 2px solid black;
+    border-collapse: collapse;
+   }
+
+   td  {
+    border: 1px solid black;
+    height: 30px;
+    width: 50px;
+    text-align: center;
+
+
+  }
+
+.order1{
+
+  background-color: red;
+}
