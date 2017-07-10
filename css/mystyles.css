@@ -2,34 +2,48 @@
   margin: 0px auto;
   padding: 0px auto;
 }
-.row-content{
-  margin: 0px auto;
-  padding: 10px 0px 10px 10px ;
-  border-bottom: 1px ridge;
-  min-height:400px;}
 
-
-
+.container{
+  margin: 5px auto;
+  padding: 5px auto;
+}
 body{
 
     z-index:0;
 }
 
 table {
-    border: 2px solid black;
+    border: 1px solid black;
+
     border-collapse: collapse;
+    position: absolute;
+    height : 100%;
+    width : 100%;
+
    }
 
    td  {
+
     border: 1px solid black;
-    height: 30px;
-    width: 50px;
+
     text-align: center;
+  }
+  tr{
+
 
 
   }
 
-.order1{
+.conainer{
+  height : 100%;
+  width : 100%;
 
-  background-color: red;
+
+}
+.hours{
+
+  height: 1%;
+  width : 5%;
+
+
 }
