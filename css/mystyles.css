@@ -65,3 +65,14 @@ table {
 .hours{
 
 }
+
+
+.divclass{
+
+  position: absolute;
+z-index: 50;
+text-align: center;
+vertical-align: middle;
+font-size: 12px;
+padding-left: 7px;
+}

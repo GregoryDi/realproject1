@@ -11,14 +11,14 @@ var z=0;
 var tcol=0;
 var trow=0;
 var oldn=289;
-
+var table;
 
 
 var f=1;
 
 
 function ShowMatrix() {
-      var table = document.createDocumentFragment();
+       table = document.createDocumentFragment();
       var n=1;
       var arr = [];
 
@@ -75,7 +75,7 @@ function readFile() {
 
 
 function parseContent(content) {
-var y = new Array
+ var y = new Array
  arr=content.split(/\r?\n\s*\s*/);
  y = arr.join(' ');
  arr = y.split(' ');
@@ -108,10 +108,13 @@ function PasteOrder(arr){
 function ShowOrders(Arrayforders){
   for (q; q < Arrayforders.length; q++)
    {
+      var alltimeoforder=Arrayforders[q]/5;
+      var timeoforder=0;
+
       count = Arrayforders[q]/5 + oldcount;
       color = getRandomColor();
       console.log(count);
-      for (n;n<count+1;n++)
+      for (n;n<count+1;n++,timeoforder++)
         {
           if (n==x){check=true;x=x+12;}
           if (check==true){z=1}
@@ -123,7 +126,8 @@ function ShowOrders(Arrayforders){
             console.log("tcol+z"+ tcol, z);
           elem.style.backgroundColor = color;
           console.log(elem);
-          console.log(n);
+          console.log(timeoforder);
+          console.log(parseInt(alltimeoforder/2));
           console.log(check);
           console.log(x);
           check=false;
@@ -131,7 +135,22 @@ function ShowOrders(Arrayforders){
           $(elem).attr("id","Cell"+n);
           $(elem).attr("Class","Cellclass"+q);
           $(elem).css({ border: 0 + "px" });
-
+              if(timeoforder==parseInt(alltimeoforder/2)-1){
+                var offset = $(elem).offset(), top, left;
+                top = Math.ceil(100*(offset.top)/$(body).height())-0.5;
+                left = Math.ceil(100*(offset.left)/$(body).width());
+                div = document.createElement('div');
+                div.innerHTML = 'Заказ №'+q+' время: ' +  Arrayforders[q];
+                div1=document.getElementById('body').appendChild(div);
+                console.log(div1);
+                  $(div1).attr("Class","divclass");
+                $(div1).css({});
+                div1.style.left = left+"%";
+                div1.style.top = top+"%";
+                console.log(left);
+                  console.log(div1.style.left);
+                  $(elem).css({ });
+              }
 
 
 
@@ -146,54 +165,3 @@ function ShowOrders(Arrayforders){
     // document.getElementById("order").addEventListener("mousedown", mouseDown);
 
    }
-
-
-function mouseDown() {
-
-         // for (f;f<countofclass+1;f++){
-
-            //cell = document.getElementById("Cell"+f);
-
-         // }
-
-            cell = document.getElementById("order");
-            cell.onmousedown = function(event) {
-            function getCoords(cell) {
-                var box = cell.getBoundingClientRect();
-                   return {
-                   top: box.top + pageYOffset,
-                   left: box.left + pageXOffset  };
-                   }
-            var coords = getCoords(cell);
-            var shiftX = event.pageX - coords.left;
-            var shiftY = event.pageY - coords.top;
-            document.body.appendChild(cell);
-            moveAt(event);
-            cell.style.zIndex = 1000;
-
-               function moveAt(event) {
-               cell.style.left= event.pageX - shiftX + 'px';
-               cell.style.top = event.pageY - shiftY + 'px';
-             }
-
-
-               document.onmousemove = function(event) {
-                   moveAt(event);
-                 };
-
-                   cell.onmouseup = function() {
-                   document.onmousemove = null;
-                   cell.onmouseup = null;
-                 };
-
-               }
-
-               cell.ondragstart = function() {
-                 return false;
-               };
-
-            console.log(f);
-
-
-
-          }
